@@ -1,31 +1,28 @@
 <script setup>
-    import { reactive } from "vue";
+    import { reactive, ref } from "vue";
     import Header from "./components/header.vue";
-    import Footer from "./components/footer.vue";
 
-    const propsWeb = reactive({
-        user: 10,
-        url: "www.dengruicode.com"
+    const web = reactive({
+        name: "邓瑞编程",
+        url: "dengruicode.com",
     });
 
-    const userAdd = () => {
-        propsWeb.user++;
-        console.log(propsWeb.user);
-    };
+    const user = ref(0);
+
+    const emitsGetWeb=(data) =>{
+        console.log(data);
+        web.url = data.url;
+    }
+
+    const emitsUserAdd = (data) =>{
+        console.log(data);
+        user.value +=data;
+    }
 </script>
 
 <template>
-    <Header
-        propsName="邓瑞编程"
-        propsUrl="dengruicode.com"
-    />
-
-    dengruicode.com
-
-    <button @click="userAdd">添加用户</button>
-
-    <!-- <Footer v-bind="propsWeb"/> -->
-    <Footer :="propsWeb" />
+    <Header @getWeb="emitsGetWeb" @userAdd="emitsUserAdd"/>
+    {{ web.url }} - {{ user }}
 </template>
 
 <style scoped></style>
