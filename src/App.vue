@@ -1,3 +1,8 @@
+<template>
+    <Header @getWeb="emitsGetWeb" @userAdd="emitsUserAdd"/>
+    {{ web.url }} - {{ user }}
+</template>
+
 <script setup>
     import { reactive, ref } from "vue";
     import Header from "./components/header.vue";
@@ -20,9 +25,5 @@
     }
 </script>
 
-<template>
-    <Header @getWeb="emitsGetWeb" @userAdd="emitsUserAdd"/>
-    {{ web.url }} - {{ user }}
-</template>
 
 <style scoped></style>
