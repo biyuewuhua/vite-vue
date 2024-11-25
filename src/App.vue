@@ -1,32 +1,24 @@
 <template>
-    <h3>App.vue-Top组件</h3>
+    <h3>App.vue</h3>
 
-    user: {{ user }}
+    <Header>
+        <a href="dengruicode.com">邓瑞编程</a>
+    </Header>
 
-    <!-- 子组件 -->
-    <Header />
+     <Footer>
+        <!-- template,v-slot:url -->
+         <template v-slot:url>
+            <a href="www.dengruicode.com">网址</a>
+         </template>
+     </Footer>
 </template>
 
 <script setup>
-    import { ref, provide } from "vue";
-
     //导入子组件
     import Header from "./components/header.vue";
-
-    const web = {
-        name: "邓瑞",
-        url: "www.dengruicode.com",
-    };
-
-    provide("provideWeb", web);
-
-    const user = ref(0);
-    provide("provideUser", user);
-
-    const userAdd = () =>{
-        user.value++;
-    }
-    provide("provideFuncUserAdd",userAdd);
+    import Footer from "./components/footer.vue";
 </script>
 
-<style scoped></style>
+<style scoped>
+
+</style>
