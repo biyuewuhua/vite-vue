@@ -5,12 +5,18 @@
         <a href="dengruicode.com">邓瑞编程</a>
     </Header>
 
-     <Footer>
+    <Footer>
         <!-- template,v-slot:url -->
-         <template v-slot:url>
+        <!-- <template v-slot:url> -->
+        <!-- <template #url="data">
+            {{ data.title }}
+            {{ data.user }} -->
+        <template #url="{title, user}">
+            {{ title }}
+            {{ user }}
             <a href="www.dengruicode.com">网址</a>
-         </template>
-     </Footer>
+        </template>
+    </Footer>
 </template>
 
 <script setup>
@@ -19,6 +25,4 @@
     import Footer from "./components/footer.vue";
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
