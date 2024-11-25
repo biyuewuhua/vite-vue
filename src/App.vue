@@ -1,29 +1,32 @@
 <template>
-    <Header @getWeb="emitsGetWeb" @userAdd="emitsUserAdd"/>
-    {{ web.url }} - {{ user }}
+    <h3>App.vue-Top组件</h3>
+
+    user: {{ user }}
+
+    <!-- 子组件 -->
+    <Header />
 </template>
 
 <script setup>
-    import { reactive, ref } from "vue";
+    import { ref, provide } from "vue";
+
+    //导入子组件
     import Header from "./components/header.vue";
 
-    const web = reactive({
-        name: "邓瑞编程",
-        url: "dengruicode.com",
-    });
+    const web = {
+        name: "邓瑞",
+        url: "www.dengruicode.com",
+    };
+
+    provide("provideWeb", web);
 
     const user = ref(0);
+    provide("provideUser", user);
 
-    const emitsGetWeb=(data) =>{
-        console.log(data);
-        web.url = data.url;
+    const userAdd = () =>{
+        user.value++;
     }
-
-    const emitsUserAdd = (data) =>{
-        console.log(data);
-        user.value +=data;
-    }
+    provide("provideFuncUserAdd",userAdd);
 </script>
-
 
 <style scoped></style>

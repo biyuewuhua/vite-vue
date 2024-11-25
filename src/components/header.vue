@@ -1,14 +1,20 @@
 <template>
-    <h3>Header</h3>
+    <h3>header.vue-Middle组件</h3>
 
-    <button @click="add">添加用户</button>
+    <!-- 子组件 -->
+     <Nav/>
 </template>
 
 <script setup>
-    const emits = defineEmits(["getWeb","userAdd"]);
-    emits("getWeb", { name: "邓瑞", url: "www.dengruicode.com" });
+    //导入子组件
+    import Nav from "./nav.vue"
 
-    const add = ()=>{
-        emits("userAdd",10);
-    }
+    import { inject } from "vue";
+
+    const user = inject("provideUser");
+    console.log("provideUser:",user);
 </script>
+
+<style scoped>
+
+</style>
