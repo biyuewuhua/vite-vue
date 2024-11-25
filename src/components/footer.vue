@@ -1,7 +1,7 @@
 <template>
-    <h3>header.vue - 子组件</h3>
+    <h3>footer.vue - 子组件</h3>
 
-    <slot/>
+    <slot name="url" />
 </template>
 
 <script setup></script>
